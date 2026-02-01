@@ -13,9 +13,9 @@
 </head>
 <body class="min-h-screen bg-pink-300 flex flex-col justify-center items-center text-white font-sans p-4 cursor-auto">
     
-    <!-- Popup nom (caché par défaut) -->
+    <!-- Popup nom -->
     <div id="namePopup" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-        <div class="bg-white/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 max-w-sm w-11/12 mx-4 text-center shadow-2xl">
+        <div class="bg-white/95 backdrop-blur-xl rounded-3xl p-6 md:p-8 max-w-sm w-11/12 mx-4 text-center shadow-2xl animate-pulse">
             <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4 md:mb-6">Surprise !!!🙃</h2>
         <input type="text" id="userName" placeholder="Ton prénom s'il te plaît..." 
        class="w-full px-4 md:px-6 py-3 md:py-4 text-base md:text-lg text-gray-800 border-2 border-pink-200 rounded-2xl focus:border-pink-400 focus:outline-none text-center font-semibold mb-4 md:mb-6 bg-white shadow-inner">
@@ -25,12 +25,12 @@
         </div>
     </div>
     
-    <!-- Titre DYNAMIQUE (caché au début) -->
-    <h1 id="dynamicTitle" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-black font-bold mb-8 md:mb-12 drop-shadow-2xl hidden text-center px-4">
+    <!-- Titre  -->
+    <h1 id="dynamicTitle" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-black font-bold mb-8 md:mb-12 drop-shadow-2xl animate-pulse hidden text-center px-4">
         <span id="nameDisplay"></span>, veux-tu être ma Valentine ?🥹👉🏾👈🏾
     </h1>
     
-    <!-- Boutons (cachés au début) -->
+    <!-- Boutons  -->
     <button id="oui" 
         class="fixed px-6 md:px-8 py-4 md:py-6 text-lg md:text-xl font-bold mt-8 bg-gradient-to-r from-pink-400 to-rose-400 text-white rounded-full shadow-2xl hover:scale-125 transition-all duration-300 z-20 min-w-[120px] md:min-w-[140px] hover:shadow-pink-500/50 hidden">
         Oui 😍
@@ -44,7 +44,7 @@
     <!-- Succès -->
     <div id="success" class="fixed inset-0 bg-black/80 flex flex-col justify-center items-center z-30 hidden px-4">
         <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3Y2aWoxeHFnOGF5cGFlYW92cDJhY2IydGd4d3U2M2Z5Z2l2eDByeCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/u8u0R51ND9L2/giphy.gif" alt="Succès !" class="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto mb-6 md:mb-8 animate-bounce">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent drop-shadow-2xl text-center">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent drop-shadow-2xl animate-pulse text-center">
             Woooww Superrr ! ❤️‍🩹
         </h2>
     </div>
@@ -79,17 +79,23 @@
             ouiBtn.classList.remove('hidden');
             nonBtn.classList.remove('hidden');
             
-            // Position initiale boutons
-            ouiBtn.style.left = 'calc(50% - 100px)';
+            // Position initiale boutons (responsive)
+            const isMobile = window.innerWidth < 768;
+            const ouiWidth = isMobile ? 120 : 140;
+            const spacing = isMobile ? 10 : 20;
+            
+            ouiBtn.style.left = `calc(50% - ${ouiWidth + spacing}px)`;
             ouiBtn.style.top = 'calc(50% + 30px)';
-            nonBtn.style.left = 'calc(50% + 80px)';
+            nonBtn.style.left = `calc(50% + ${spacing}px)`;
             nonBtn.style.top = 'calc(50% + 30px)';
         }
 
         // Fonction pour déplacer le bouton Non
         function moveNonButton() {
-            const maxX = window.innerWidth - 180;
-            const maxY = window.innerHeight - 180;
+            const isMobile = window.innerWidth < 768;
+            const buttonWidth = isMobile ? 120 : 180;
+            const maxX = window.innerWidth - buttonWidth;
+            const maxY = window.innerHeight - buttonWidth;
             const newX = Math.random() * maxX;
             const newY = Math.random() * maxY;
             nonBtn.style.left = newX + 'px';
