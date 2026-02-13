@@ -24,19 +24,14 @@ body {
     background-size: 400% 400%;
     animation: gradientBG 12s ease infinite;
 }
-/* Affichage Ios */
-@-webkit-keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
 
-/* animation  */
+/* --- ANIMATIONS BACKGROUND --- */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
 /* --- CONTAINER --- */
 .container {
     text-align: center;
@@ -46,27 +41,14 @@ body {
     box-shadow: 0 20px 50px rgba(0,0,0,0.1);
     animation: fadeIn 1.5s ease;
     max-width: 450px;
-    position: relative; /* Important pour le bouton NON */
+    position: relative;
     overflow: hidden;
 }
 
 /* --- TEXTES --- */
-h1 {
-    font-weight: 500;
-    color: #d6336c;
-}
-p {
-    color: #555;
-    font-size: 16px;
-    line-height: 1.6;
-}
-input {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    width: 80%;
-    margin-top: 15px;
-}
+h1 { font-weight: 500; color: #d6336c; }
+p { color: #555; font-size: 16px; line-height: 1.6; }
+input { padding: 10px; border-radius: 10px; border: 1px solid #ddd; width: 80%; margin-top: 15px; font-size:16px; }
 
 /* --- BOUTONS --- */
 button {
@@ -78,104 +60,36 @@ button {
     font-size: 14px;
     transition: 0.3s;
 }
-
-.yes {
-    background-color: #ff4d6d;
+.yes { background-color: #ff4d6d; color: white; }
+.yes:hover { transform: scale(1.1); }
+.no { background-color: #dee2e6; }
+.retry {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    background: #d6336c;
     color: white;
-    transition: 0.3s;
-}
-.yes:hover {
-    transform: scale(1.1);
-}
-
-.no {
-    background-color: #dee2e6;
-    transition: 0.3s;
+    cursor: pointer;
 }
 
 /* --- IMAGES --- */
-img {
-    width: 200px;
-    margin-top: 20px;
-    border-radius: 15px;
-    animation: float 3s ease-in-out infinite;
-}
+img { width: 200px; margin-top: 20px; border-radius: 15px; animation: float 3s ease-in-out infinite; }
 
-/* --- ANIMATIONS --- */
-@keyframes fadeIn {
-    from {opacity:0; transform: translateY(20px);}
-    to {opacity:1; transform: translateY(0);}
-}
+/* --- ANIMATIONS DIVERSES --- */
+@keyframes fadeIn { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
+@keyframes float { 0% {transform: translateY(0px);} 50% {transform: translateY(-10px);} 100% {transform: translateY(0px);} }
+.heart { position: absolute; color: #ff4d6d; font-size: 20px; animation: fall 5s linear infinite; }
+@keyframes fall { 0% {top:-10%; opacity:1;} 100% {top:110%; opacity:0;} }
+.success-bg { background-size: cover; background-position: center; position: relative; color: white; animation: glow 2s infinite alternate; }
+.overlay { background: rgba(0,0,0,0.75); padding: 30px; border-radius: 20px; backdrop-filter: blur(8px); animation: fadeIn 1.2s ease; }
+.overlay h1, .overlay p { color: white; text-shadow: 0 0 15px rgba(255,255,255,0.6); }
+@keyframes glow { from { box-shadow: 0 10px 40px rgba(255,105,135,0.2),0 0 30px rgba(255,105,135,0.15); } to { box-shadow: 0 15px 50px rgba(255,105,135,0.35),0 0 50px rgba(255,105,135,0.3); } }
 
-@keyframes float {
-    0% {transform: translateY(0px);}
-    50% {transform: translateY(-10px);}
-    100% {transform: translateY(0px);}
-}
-
-.heart {
-    position: absolute;
-    color: #ff4d6d;
-    font-size: 20px;
-    animation: fall 5s linear infinite;
-}
-
-@keyframes fall {
-    0% {top:-10%; opacity:1;}
-    100% {top:110%; opacity:0;}
-}
-
-/* --- SUCCÈS BACKGROUND --- */
-.success-bg {
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    color: white;
-    animation: glow 2s infinite alternate;
-}
-
-/* --- OVERLAY TEXTES --- */
-.overlay {
-    background: rgba(0,0,0,0.75); /* plus sombre pour lisibilité */
-    padding: 30px;
-    border-radius: 20px;
-    backdrop-filter: blur(8px);
-    animation: fadeIn 1.2s ease;
-}
-
-.overlay h1,
-.overlay p {
-    color: white;
-    text-shadow: 0 0 15px rgba(255,255,255,0.6);
-}
-
-/* --- BOUTON PULSE --- */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-/* --- GLOW --- */
-@keyframes glow {
-    from {
-        box-shadow:
-        0 10px 40px rgba(255, 105, 135, 0.2),
-        0 0 30px rgba(255, 105, 135, 0.15);
-    }
-    to {
-        box-shadow:
-        0 15px 50px rgba(255, 105, 135, 0.35),
-        0 0 50px rgba(255, 105, 135, 0.3);
-    }
-}
+/* --- RESPONSIVE --- */
 @media screen and (max-width: 400px) {
-  .container {
-    padding: 20px; /* remplace le padding normal */
-  }
-  input {
-    width: 90%; /* input plus large sur petit écran */
-  }
+    .container { padding: 20px; }
+    input { width: 90%; }
 }
 </style>
 </head>
@@ -183,7 +97,7 @@ img {
 
 <div class="container" id="content">
     <h1>Une petite question… 💖</h1>
-    <p>Avant tout… j’aimerais que tu entres ton prénom.</p>
+    <p>Avant tout… j'aimerais que tu entres ton prénom.</p>
     <input type="text" id="nameInput" placeholder="Entre ton prénom ici"><br>
     <button class="yes" onclick="askValentine()">Continuer</button>
 </div>
@@ -193,7 +107,7 @@ let noClickCount = 0;
 let yesScale = 1;
 
 const funnyMessages = [
-    "T’es sûre ? 🥺",
+    "T'es sûre ? 🥺",
     "Vraiment sûre ? 😭",
     "Allez stp 😩💗",
     "Une dernière chance ? 🥹",
@@ -208,77 +122,54 @@ function askValentine() {
     const messages = {
         fleur: {
             title: "Ma Fleur… 🌸",
-            text: `Doria… La distance a parfois ce pouvoir étrange…
-Elle sépare les corps, mais elle révèle les sentiments.
-Le temps passe, les kilomètres restent…
-Mais certaines pensées, elles, ne partent jamais.
-Peut-être qu’on s’est éloignés.
-Peut-être que la vie a pris un détour.
-Mais au fond…
-certaines connexions ne disparaissent pas vraiment.
-Et si cette Saint-Valentin était l’occasion
-de ne plus laisser la distance décider pour nous ?
-🌹 Peut-être qu’il n’est pas trop tard
-pour recommencer là où tout avait commencé…
-Alors dis-moi…
-on pourrait essayer encore une fois ?.<br><br>
-            Est-ce que tu accepterais d’être ma Valentine ?`,
+            text: `Doria… La distance a parfois ce pouvoir étrange… Elle sépare les corps, mais elle révèle les sentiments. Le temps passe, les kilomètres restent… Mais certaines pensées, elles, ne partent jamais. Peut-être qu'on s'est éloignés. Peut-être que la vie a pris un détour. Mais au fond… certaines connexions ne disparaissent pas vraiment. Et si cette Saint-Valentin était l'occasion de ne plus laisser la distance décider pour nous ? 🌹 Peut-être qu'il n'est pas trop tard pour recommencer là où tout avait commencé… Alors dis-moi… on pourrait essayer encore une fois ?.<br><br>Est-ce que tu accepterais d'être ma Valentine ?`,
             bg: "img/fleur.gif"
         },
         rakelle: {
             title: "Rakelle… 🌹",
-            text: `Rakelle… Depuis un moment, il y a quelque chose que je garde dans un coin de mon cœur.
-Quand tu souris, le monde devient un peu plus léger…
-Quand tu parles, même le silence écoute.
-Et je me demande…
-Et si cette Saint-Valentin était le début de quelque chose de magique ? 💫
-Alors dis-moi…
-💌 Veux-tu être ma Valentine ?`,
+            text: `Rakelle… depuis un moment, je sens que mon cœur s'incline devant toi avec respect et fierté. Tu illumines mes jours de ta grâce et chaque sourire me rappelle combien je suis chanceux de te connaître. Ton regard me captive, ta voix me transporte, et ton être tout entier m'inspire. Je ne parle pas seulement de sentiments… je parle d'un amour noble, profond et sincère, un amour qui ne s'éteint pas face aux obstacles. 💌 Rakelle… veux-tu être ma Valentine ?`,
             bg: "img/rakelle.gif"
         },
         adoresse: {
             title: "Adoresse… ❤️",
-            text: `Ma petite princesse… Mon amour pour toi n’est pas un simple sentiment.
-C’est une décision, une conviction, une promesse silencieuse.
-Je t’aime avec mes forces,
-mais aussi avec mes faiblesses.
-Je t’aime dans les moments simples,
-dans les silences,
-dans les regards qui n’ont pas besoin de mots.
-Tu n’es pas juste ma copine.
-Tu es celle avec qui j’imagine mon avenir.
-Celle que je veux protéger, soutenir, honorer.
-💍 Et si l’amour était un choix quotidien…
-alors je te choisis, aujourd’hui et pour longtemps.<br><br>
-            Est-ce que tu voudrais être ma Valentine ?`,
+            text: `Ma petite princesse… Mon amour pour toi n'est pas un simple sentiment. C'est une décision, une conviction, une promesse silencieuse. Je t'aime avec mes forces, mais aussi avec mes faiblesses. Je t'aime dans les moments simples, dans les silences, dans les regards qui n'ont pas besoin de mots. Tu n'es pas juste ma copine. Tu es celle avec qui j'imagine mon avenir. Celle que je veux protéger, soutenir, honorer. 💍 Et si l'amour était un choix quotidien… alors je te choisis, aujourd'hui et pour longtemps.<br><br>Est-ce que tu voudrais être ma Valentine ?`,
             bg: "img/adoresse.jpg"
+        },
+        aude: {
+            title: "Aude… 🌺",
+            text: `Aude… depuis le premier instant où nos chemins se sont croisés, tu as laissé une empreinte douce et unique dans mon cœur. Chaque sourire, chaque regard, chaque mot échangé me rappelle combien tu comptes pour moi. 💌 Aude… veux-tu être ma Valentine ?`,
+            bg: "img/aude.gif"
         }
     };
 
-    if(messages[name]) {
+    if(messages[name]){
         const girl = messages[name];
 
         content.innerHTML = `
             <h1>${girl.title}</h1>
             <p>${girl.text}</p>
-            <button id="yesBtn" class="yes" onclick="success('${name}', '${girl.bg}')">Oui 💖</button>
+            <button id="yesBtn" class="yes" onclick="success('${name}','${girl.bg}')">Oui 💖</button>
             <button id="noBtn" class="no" onclick="handleNo()">Non 😏</button>
+            <br><button class="retry" onclick="resetForm()">Réessayer 🔄</button>
         `;
     } else {
-        content.innerHTML = `<h1>Hmm…</h1><p>Ce prénom n’était pas prévu 😅</p>`;
+        content.innerHTML = `
+            <h1>Hmm…</h1>
+            <p>Ce prénom n'était pas prévu 😅</p>
+            <button class="retry" onclick="resetForm()">Réessayer 🔄</button>
+        `;
     }
 }
 
-function handleNo() {
+function handleNo(){
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
     const container = document.querySelector(".container");
 
     noClickCount++;
-
-    if (noClickCount <= funnyMessages.length) {
-        noBtn.innerText = funnyMessages[noClickCount - 1];
-    } else {
+    if(noClickCount <= funnyMessages.length){
+        noBtn.innerText = funnyMessages[noClickCount-1];
+    }else{
         noBtn.innerText = "Bon… j'abandonne 😭";
     }
 
@@ -289,40 +180,51 @@ function handleNo() {
 
     const maxX = container.clientWidth - noBtn.offsetWidth;
     const maxY = container.clientHeight - noBtn.offsetHeight;
-
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
-
+    const randomX = Math.random()*maxX;
+    const randomY = Math.random()*maxY;
     noBtn.style.left = randomX + "px";
     noBtn.style.top = randomY + "px";
 }
 
-function success(name, backgroundImage) {
+function success(name,bg){
     const content = document.getElementById("content");
     content.classList.add("success-bg");
-    content.style.backgroundImage = `url('${backgroundImage}')`;
-
+    content.style.backgroundImage = `url('${bg}')`;
     content.innerHTML = `
         <div class="overlay">
             <h1>Tu pensais que tu avais le choix ? 😌💕</h1>
-            <p>Ton oui me fait sincèrement sourire…<br>
-            Ce moment restera gravé.<br><br>Je t’aime. 💖✨</p>
+            <p>Ton oui me fait sincèrement sourire…<br>Ce moment restera gravé.<br><br>Je t'aime. 💖✨</p>
+            <button class="retry" onclick="resetForm()">Réessayer 🔄</button>
         </div>
     `;
 
     createHearts();
 }
 
-function createHearts() {
-    setInterval(() => {
+function createHearts(){
+    setInterval(()=>{
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.innerHTML = "❤";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = Math.random() * 20 + 10 + "px";
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.fontSize = Math.random()*20+10+"px";
         document.body.appendChild(heart);
-        setTimeout(() => { heart.remove(); }, 5000);
-    }, 300);
+        setTimeout(()=>{heart.remove()},5000);
+    },300);
+}
+
+function resetForm(){
+    const content = document.getElementById("content");
+    noClickCount = 0;
+    yesScale = 1;
+    content.classList.remove("success-bg");
+    content.style.backgroundImage = "";
+    content.innerHTML = `
+        <h1>Une petite question… 💖</h1>
+        <p>Avant tout… j'aimerais que tu entres ton prénom.</p>
+        <input type="text" id="nameInput" placeholder="Entre ton prénom ici"><br>
+        <button class="yes" onclick="askValentine()">Continuer</button>
+    `;
 }
 </script>
 
