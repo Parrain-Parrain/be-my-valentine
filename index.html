@@ -5,18 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Be My Valentine</title>
 <style>
+/* --- vue mobile --- */
+input {
+    font-size: 16px;
+}
+
 /* --- BODY --- */
 body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #ffe6eb, #fff0f5);
-    font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
+
+    font-family: 'Poppins', sans-serif;
+
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
 }
 
+/* animation  */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 /* --- CONTAINER --- */
 .container {
     text-align: center;
@@ -188,21 +202,48 @@ function askValentine() {
     const messages = {
         fleur: {
             title: "Ma Fleur… 🌸",
-            text: `Depuis longtemps malgré la distance, les disputes et le nombre d'années passée sans te voir, 
-            je ne peux arrêter de penser à toi. Quand je pense à quelque chose de doux, je pense à toi... 
-            Malgré tout, je ne peux arrêter de t'aimer.<br><br>
+            text: `Doria… La distance a parfois ce pouvoir étrange…
+Elle sépare les corps, mais elle révèle les sentiments.
+Le temps passe, les kilomètres restent…
+Mais certaines pensées, elles, ne partent jamais.
+Peut-être qu’on s’est éloignés.
+Peut-être que la vie a pris un détour.
+Mais au fond…
+certaines connexions ne disparaissent pas vraiment.
+Et si cette Saint-Valentin était l’occasion
+de ne plus laisser la distance décider pour nous ?
+🌹 Peut-être qu’il n’est pas trop tard
+pour recommencer là où tout avait commencé…
+Alors dis-moi…
+on pourrait essayer encore une fois ?.<br><br>
             Est-ce que tu accepterais d’être ma Valentine ?`,
             bg: "img/fleur.gif"
         },
         rakelle: {
             title: "Rakelle… 🌹",
-            text: `Ma sorcière tu sais ce qui est drôle ? Finalement on se ressemble un peu en vrai, je suis peut-être un sorcier aussi mais voilà ma maniere de te montrer que je ne suis pas un robot...<br><br>
-            Ma sorcière, veux-tu être ma Valentine ?`,
+            text: `Rakelle… Depuis un moment, il y a quelque chose que je garde dans un coin de mon cœur.
+Quand tu souris, le monde devient un peu plus léger…
+Quand tu parles, même le silence écoute.
+Et je me demande…
+Et si cette Saint-Valentin était le début de quelque chose de magique ? 💫
+Alors dis-moi…
+💌 Veux-tu être ma Valentine ?`,
             bg: "img/rakelle.gif"
         },
         adoresse: {
             title: "Adoresse… ❤️",
-            text: `Ma petite princesse…<br><br>
+            text: `Ma petite princesse… Mon amour pour toi n’est pas un simple sentiment.
+C’est une décision, une conviction, une promesse silencieuse.
+Je t’aime avec mes forces,
+mais aussi avec mes faiblesses.
+Je t’aime dans les moments simples,
+dans les silences,
+dans les regards qui n’ont pas besoin de mots.
+Tu n’es pas juste ma copine.
+Tu es celle avec qui j’imagine mon avenir.
+Celle que je veux protéger, soutenir, honorer.
+💍 Et si l’amour était un choix quotidien…
+alors je te choisis, aujourd’hui et pour longtemps.<br><br>
             Est-ce que tu voudrais être ma Valentine ?`,
             bg: "img/adoresse.jpg"
         }
